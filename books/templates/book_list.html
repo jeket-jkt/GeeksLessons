@@ -1,0 +1,10 @@
+<h1>Книги категории</h1>
+<ul>
+{% for book in books %}
+    <li>
+        <a href="{% url 'book-detail' book.pk %}">{{ book.title }}</a> — {{ book.author }}
+    </li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'category-list' %}">Назад к списку категорий</a>
