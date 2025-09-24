@@ -1,32 +1,17 @@
-"""
-URL configuration for myproject project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.2/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.contrib import admin
-from django.urls import path, include
-from app1.views import index as app1_index
-from app2.views import index as app2_index
-from books.views import CategoryListView, BookListView, BookDetailView
+from django.urls import path
+from books.views import (
+    CategoryListView,
+    BookListView, BookDetailView,
+    AuthorListView, AuthorCreateView, AuthorUpdateView, AuthorDeleteView
+)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('app1/', app1_index),
-    path('app2/', app2_index),
     path('categories/', CategoryListView.as_view(), name='category_list'),
-    path('categories/<int:pk>/books/', BookListView.as_view(), name='book_list'),
-    path('books/<int:pk>/', BookDetailView.as_view(), name='book_detail'),
-    path('admin/', admin.site.urls),
-    path('', include('books.urls')),
+    path('books/<int:pk>/', BookListView.as_view(), name='book_list'),
+    path('book/<int:pk>/', BookDetailView.as_view(), name='book_detail'),
+
+    path('authors/', AuthorListView.as_view(), name='author_list'),
+    path('authors/create/', AuthorCreateView.as_view(), name='author_create'),
+    path('authors/<int:pk>/update/', AuthorUpdateView.as_view(), name='author_update'),
+    path('authors/<int:pk>/delete/', AuthorDeleteView.as_view(), name='author_delete'),
 ]

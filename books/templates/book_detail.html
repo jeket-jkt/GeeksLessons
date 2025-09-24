@@ -3,4 +3,4 @@
 <p>Категория: {{ book.category.name }}</p>
 <p>Дата публикации: {{ book.published_date }}</p>
 
-<a href="{% url 'book-list' book.category.pk %}">Назад к списку книг категории</a>
+<a href="{% url 'book_list' book.category.pk %}">Назад к списку книг категории</a>

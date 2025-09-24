@@ -2,9 +2,9 @@
 <ul>
 {% for book in books %}
     <li>
-        <a href="{% url 'book-detail' book.pk %}">{{ book.title }}</a> — {{ book.author }}
+        <a href="{% url 'book_detail' book.pk %}">{{ book.title }}</a> — {{ book.author }}
     </li>
 {% endfor %}
 </ul>
 
-<a href="{% url 'category-list' %}">Назад к списку категорий</a>
+<a href="{% url 'category_list' %}">Назад к списку категорий</a>

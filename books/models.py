@@ -1,5 +1,4 @@
 from django.db import models
-from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=50)
@@ -13,6 +12,10 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='books')
     published_date = models.DateField(null=True, blank=True)
+
+class Author(models.Model):
+    name = models.CharField(max_length=100)
+    bio = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return self.title
